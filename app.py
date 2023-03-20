@@ -229,22 +229,22 @@ def distribution_cat_vid(df):
     # Show the chart    
     st.plotly_chart(fig)
 
-def word_cloud(df):
-    tags_str = ' '.join(df['tags'])
+# def word_cloud(df):
+#     tags_str = ' '.join(df['tags'])
 
-# Generate the word cloud
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(tags_str)
+# # Generate the word cloud
+#     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(tags_str)
 
-    # Create a dataframe of the word cloud data
-    wordcloud_df = pd.DataFrame(wordcloud.words_.items(), columns=['tag', 'count'])
+#     # Create a dataframe of the word cloud data
+#     wordcloud_df = pd.DataFrame(wordcloud.words_.items(), columns=['tag', 'count'])
 
-    # Sort the dataframe by count in descending order
-    wordcloud_df = wordcloud_df.sort_values(by=['count'], ascending=False)
+#     # Sort the dataframe by count in descending order
+#     wordcloud_df = wordcloud_df.sort_values(by=['count'], ascending=False)
 
-    # Create the Plotly bar chart
-    fig = px.bar(wordcloud_df.head(20), x='tag', y='count', color='tag', labels={'tag': 'Tag', 'count': 'Count'},
-                title='Most Frequent Video Tags')
-    st.plotly_chart(fig)
+#     # Create the Plotly bar chart
+#     fig = px.bar(wordcloud_df.head(20), x='tag', y='count', color='tag', labels={'tag': 'Tag', 'count': 'Count'},
+#                 title='Most Frequent Video Tags')
+#     st.plotly_chart(fig)
 
 
 
@@ -281,7 +281,7 @@ else:
     st.subheader('Category and video distrubtion')
     distribution_cat_vid(videos)
     st.subheader('The most frequently used tags in the videos')
-    word_cloud(videos)
+    # word_cloud(videos)
     st.subheader('Audience Engagement')
     # Create scatter plot
     fig = px.scatter(videos, x='view_count', y='like_count', color='comment_count', 
